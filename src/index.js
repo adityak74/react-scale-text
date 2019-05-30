@@ -112,7 +112,7 @@ class ScaleText extends Component {
 
   render() {
     const { size: fontSize } = this.state;
-    const { children, containerWidth, widthOnly } = this.props;
+    const { children, containerMaxWidth, widthOnly } = this.props;
 
     const overflowStyle = widthOnly ?
       { overflowY: 'visible', overflowX: 'hidden', height: 'auto' } :
@@ -124,8 +124,9 @@ class ScaleText extends Component {
 
     const style = {
       fontSize: fontSize ? `${fontSize.toFixed(2)}px` : 'inherit',
-      width: containerWidth,
+      width: '100%',
       height: '100%',
+      maxWidth: containerMaxWidth,
       ...overflowStyle
       // overflow: 'hidden'
     };
@@ -152,14 +153,14 @@ class ScaleText extends Component {
 
 ScaleText.propTypes = {
   children: PropTypes.node.isRequired,
-  containerWidth: PropTypes.string,
+  containerMaxWidth: PropTypes.string,
   minFontSize: PropTypes.number.isRequired,
   maxFontSize: PropTypes.number.isRequired,
   widthOnly: PropTypes.bool
 };
 
 ScaleText.defaultProps = {
-  containerWidth: '100%',
+  containerMaxWidth: '100%',
   minFontSize: Number.NEGATIVE_INFINITY,
   maxFontSize: Number.POSITIVE_INFINITY,
   widthOnly: false
