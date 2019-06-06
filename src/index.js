@@ -124,7 +124,7 @@ class ScaleText extends Component {
 
     const style = {
       fontSize: fontSize ? `${fontSize.toFixed(2)}px` : 'inherit',
-      width: 'auto',
+      width: 'fit-content',
       height: '100%',
       maxWidth: containerMaxWidth,
       ...overflowStyle
