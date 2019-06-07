@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import warn from 'warning';
@@ -113,7 +112,7 @@ class ScaleText extends Component {
 
   render() {
     const { size: fontSize } = this.state;
-    const { children, containerMaxWidth, widthOnly } = this.props;
+    const { children, containerWidth, containerMaxWidth, widthOnly } = this.props;
 
     const overflowStyle = widthOnly ?
       { overflowY: 'visible', overflowX: 'hidden', height: 'auto' } :
@@ -125,9 +124,7 @@ class ScaleText extends Component {
 
     const style = {
       fontSize: fontSize ? `${fontSize.toFixed(2)}px` : 'inherit',
-      width: 'min-content',
-      width: '-webkit-min-content',
-      width: '-moz-min-content',
+      width: containerWidth,
       height: '100%',
       maxWidth: containerMaxWidth,
       ...overflowStyle
@@ -156,6 +153,7 @@ class ScaleText extends Component {
 
 ScaleText.propTypes = {
   children: PropTypes.node.isRequired,
+  containerWidth: PropTypes.string,
   containerMaxWidth: PropTypes.string,
   minFontSize: PropTypes.number.isRequired,
   maxFontSize: PropTypes.number.isRequired,
@@ -163,6 +161,7 @@ ScaleText.propTypes = {
 };
 
 ScaleText.defaultProps = {
+  containerWidth: '100%',
   containerMaxWidth: '100%',
   minFontSize: Number.NEGATIVE_INFINITY,
   maxFontSize: Number.POSITIVE_INFINITY,
