@@ -40,15 +40,6 @@ class ScaleText extends Component {
       this.resize();
       window.addEventListener('resize', this._handleResize);
     }
-
-    console.log('outide the mf----->>');
-    console.log('_wrapper', this._wrapper);
-    console.log('_childWrapper', this._childWrapper);
-
-    if (this._wrapper && this._childWrapper) {
-      console.log('_wrapper', this._wrapper);
-      console.log('_childWrapper', this._childWrapper);
-    }
   }
 
   componentDidUpdate(prevProps) {
@@ -143,8 +134,7 @@ class ScaleText extends Component {
     const childProps = {
       fontSize: fontSize ?
         parseFloat(fontSize.toFixed(2)) :
-        'inherit',
-      ref: (c) => { this._childWrapper = c; },
+        'inherit'
     };
 
     return (
