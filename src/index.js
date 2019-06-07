@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import warn from 'warning';
@@ -124,7 +125,9 @@ class ScaleText extends Component {
 
     const style = {
       fontSize: fontSize ? `${fontSize.toFixed(2)}px` : 'inherit',
-      width: '100%',
+      width: 'min-content',
+      width: '-webkit-min-content',
+      width: '-moz-min-content',
       height: '100%',
       maxWidth: containerMaxWidth,
       ...overflowStyle
