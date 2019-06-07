@@ -112,7 +112,7 @@ class ScaleText extends Component {
 
   render() {
     const { size: fontSize } = this.state;
-    const { children, containerWidth, containerMaxWidth, widthOnly } = this.props;
+    const { children, className, containerWidth, containerMaxWidth, widthOnly } = this.props;
 
     const overflowStyle = widthOnly ?
       { overflowY: 'visible', overflowX: 'hidden', height: 'auto' } :
@@ -139,7 +139,7 @@ class ScaleText extends Component {
 
     return (
       <div
-        className="scaletext-wrapper"
+        className={className}
         ref={(c) => { this._wrapper = c; }}
         style={style}
       >
@@ -153,6 +153,7 @@ class ScaleText extends Component {
 
 ScaleText.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   containerWidth: PropTypes.string,
   containerMaxWidth: PropTypes.string,
   minFontSize: PropTypes.number.isRequired,
@@ -161,6 +162,7 @@ ScaleText.propTypes = {
 };
 
 ScaleText.defaultProps = {
+  className: 'scaletext-wrapper',
   containerWidth: '100%',
   containerMaxWidth: '100%',
   minFontSize: Number.NEGATIVE_INFINITY,
